@@ -61,7 +61,7 @@ section h1 {
 section p {
   color: #665;
   margin-bottom: 0rem;
-  font-size: 1rem; 
+  font-size: 1rem;
 }
 
 /* Output areas */
@@ -110,7 +110,8 @@ ul li:last-child {
   margin-top: 0rem;
 }
 
-#error-messages {
+#error-messages,
+#broken-array-errors {
   background-color: #f7d7da;
   color: #720c24;
   padding: 1.75rem;
