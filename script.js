@@ -12,8 +12,8 @@ const characters = [
   { id: 8, name: "R2-D2", age: 33 },
   { id: 9, name: "C-3PO", age: 112 },
   { id: 10, name: "Padmé Amidala", age: 27 },
-  { id: 11, age: 1 },
-  { id: 12, age: 10 },
+  // { id: 11, age: 1 },
+  // { id: 12, age: 10 },
 ];
 
 const brokenCharacters = [
@@ -99,8 +99,11 @@ renderFilteredCharactersByAge(
 // If a character object is missing the name property, use console.error() to log a descriptive error message
 // to the console, and dynamically create and display the error message in the HTML div element with id "error-messages".
 function enhancedRenderCharList(characterArr, successDOM, errorDom) {
+  let missingNameCount = 0;
+
   characterArr.forEach((char) => {
     if (!char.name) {
+      missingNameCount++;
       let errorMsg = `Error: Character with ID ${char.id} is missing the "name" property.`;
       console.error(errorMsg);
       const li = document.createElement("li");
@@ -113,6 +116,10 @@ function enhancedRenderCharList(characterArr, successDOM, errorDom) {
       successDOM.appendChild(li);
     }
   });
+  if (missingNameCount === 0) {
+    successDOM.classList.add("success");
+    errorDom.style.display = "none";
+  }
 }
 enhancedRenderCharList(
   characters,
